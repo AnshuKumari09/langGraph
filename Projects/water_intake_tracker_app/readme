@@ -1,1 +1,119 @@
+💧 AI Water Intake Tracker
+
+An end-to-end AI-powered water intake tracking application built to understand how frontend, backend, database, and AI work together in a real-world project.
+
+This project is learning-focused, beginner-friendly, and intentionally designed with clear separation of responsibilities so anyone can understand the full system flow.
+
+🚀 What does this project do?
+
+Lets users log water intake (in ml)
+
+Stores intake data persistently using SQLite
+
+Calculates daily total intake
+
+Shows remaining water based on daily goal
+
+Provides AI-generated motivational feedback
+
+Displays intake history & line graph for easy understanding
+
+Frontend (Streamlit)
+        ↓ HTTP Request
+Backend API (FastAPI)
+        ↓ Function Calls
+Database (SQLite)
+        ↑ Data
+AI Agent (LLM)
+
+🔍 File-by-File Explanation
+1️⃣ dashboard.py (Frontend)
+
+Built using Streamlit
+
+Takes user input (user_id, intake_ml)
+
+Sends HTTP requests to backend
+
+Displays:
+
+Success messages
+
+AI feedback
+
+Intake history
+
+Line graph for visualization
+
+👉 No business logic here
+Frontend only shows data & sends requests
+
+2️⃣ api.py (Backend API)
+
+Built using FastAPI
+
+Acts as a middleman
+
+Exposes endpoints like:
+
+/log-intake
+
+/history/{user_id}
+
+Calls database functions
+
+Sends structured data to AI agent
+
+👉 Backend = Brain Controller
+
+3️⃣ database.py (Database Layer)
+
+Uses SQLite
+
+Responsible for:
+
+Creating tables
+
+Inserting intake logs
+
+Fetching daily intake history
+
+Calculates total water consumed per day
+
+👉 Database is the source of truth
+
+4️⃣ agent.py (AI Agent)
+
+Uses an LLM
+
+Does NOT calculate numbers
+
+Only generates human-friendly feedback
+
+Receives:
+
+Total intake
+
+Remaining intake
+
+Goal
+
+👉 AI = Communication layer, not logic
+
+5️⃣ logger.py (Logging System)
+
+Uses Python’s built-in logging
+
+Writes logs to app.log
+
+Helps with:
+
+Debugging
+
+Tracking system behavior
+
+Understanding backend flow
+
+👉 Logging = developer’s black box recorder
+
 
